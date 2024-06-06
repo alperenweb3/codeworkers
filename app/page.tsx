@@ -2,7 +2,7 @@ import Image from "next/image";
 import CodeWorkersLogo from "./ui/codeworkers-logo";
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from "next/link";
-import TextSwap from "./ui/text-swap";
+import TextSwap from "./lib/text-swap";
 
 export default function Home() {
   return (
