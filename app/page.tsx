@@ -14,11 +14,11 @@ export default function Home() {
         <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
           <div/>
           <p
-            className={`text-xl text-gray-800 antialiased md:text-3xl md:leading-normal`}
+            className={`text-xl text-gray-800 antialiased md:text-4xl md:leading-normal`}
           >
             <TextSwap/><br /><strong>CodeWorks Graduates</strong>
           </p>
-          <p className="text-gray-600 text-sm md:text-base">
+          <p className="text-gray-600 text-m md:text-base">
             CodeWorkers is an exclusive community of CodeWorks graduates. It is a place where you can connect with other graduates, share your experiences, and get help with your projects.</p>
           <Link
             href="/login"

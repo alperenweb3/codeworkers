@@ -17,7 +17,7 @@ export default function LoginPage() {
           </div>
         </div>
         <LoginForm />
-        <Link className='text-[10px] text-right hover:text-orange-600' href="/">Back to Home</Link>
+        <Link className='text-[12px] text-right hover:text-orange-600' href="/">Back to Home</Link>
       </div>
     </main>
   );
