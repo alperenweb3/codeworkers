@@ -24,7 +24,9 @@ export default function Page(){
   }
 
   return (
-    <div className="mt-6 flow-root">
+    <main>
+      <h1 className="mb-4 text-xl md:text-2xl">Graduates</h1>
+      <div className="mt-6 flow-root">
     <div className="inline-block min-w-full align-middle">
       <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
         <div className="md:hidden">
@@ -55,7 +57,7 @@ export default function Page(){
           <thead className="rounded-lg text-left text-sm font-normal">
             <tr>
               <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                Graduate
+                Graduate Name
               </th>
               <th scope="col" className="px-3 py-5 font-medium">
                 Email
@@ -107,6 +109,7 @@ export default function Page(){
         </table>
       </div>
     </div>
-  </div>
+      </div>
+    </main>
   );
 }
