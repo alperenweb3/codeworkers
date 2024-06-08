@@ -6,6 +6,9 @@ import { fetchGraduateById } from "@/app/lib/firebase/data"
 import Image from "next/image"
 import Link from "next/link"
 import { EnvelopeIcon, PhoneIcon, AcademicCapIcon, BookOpenIcon, MapPinIcon } from '@heroicons/react/24/outline';
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { graduates } from "@/app/lib/firebase/mockData";
+
 
 
 export default function Page({params}:{params:{id:string}}){
@@ -34,7 +37,7 @@ export default function Page({params}:{params:{id:string}}){
 
   return (
     <main>
-      <div className="bg-gray-100 flex p-4">
+      <div className="flex p-4">
             <div className="bg-white rounded-xl shadow-lg w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
               <div className="flex flex-col items-center gap-4">
                 <div className="rounded-full w-32 h-32 overflow-hidden">
@@ -50,22 +53,18 @@ export default function Page({params}:{params:{id:string}}){
                   <h2 className="text-2xl font-bold">{graduate.name}</h2>
                   <p className="text-gray-500 dark:text-gray-400">{graduate.program}</p>
                 </div>
-                <div className="grid grid-cols-2 gap-4 w-full">
-                  <div className="flex flex-col items-center gap-1">
+                <div className="grid grid-cols-1 gap-4 w-full">
+                  <div className="flex items-center gap-3">
                     <EnvelopeIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                     <p className="text-gray-500 dark:text-gray-400">{graduate.email}</p>
                   </div>
-                  <div className="flex flex-col items-center gap-1">
+                  <div className="flex items-center gap-3">
                     <PhoneIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                     <p className="text-gray-500 dark:text-gray-400">{graduate.phone}</p>
                   </div>
-                  <div className="flex flex-col items-center gap-1">
+                  <div className="flex items-center gap-3">
                     <AcademicCapIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                     <p className="text-gray-500 dark:text-gray-400">{graduate.graduationYear}</p>
-                  </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <BookOpenIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
-                    <p className="text-gray-500 dark:text-gray-400">{graduate.program}</p>
                   </div>
                 </div>
                 <div className="flex gap-2 w-full">
@@ -74,7 +73,7 @@ export default function Page({params}:{params:{id:string}}){
                     className="flex-1 inline-flex h-9 items-center justify-center rounded-md bg-blue-500 text-white shadow transition-colors hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
-                    {/* <LinkedinIcon className="mr-2 h-5 w-5" /> */}
+                    <FaLinkedin className="mr-2 h-5 w-5" />
                     LinkedIn
                   </Link>
                   <Link
@@ -82,7 +81,7 @@ export default function Page({params}:{params:{id:string}}){
                     className="flex-1 inline-flex h-9 items-center justify-center rounded-md bg-gray-900 text-white shadow transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-200"
                     prefetch={false}
                   >
-                    {/* <GitlabIcon className="mr-2 h-5 w-5" /> */}
+                    <FaGithub className="mr-2 h-5 w-5" />
                     GitHub
                   </Link>
                 </div>
@@ -97,24 +96,10 @@ export default function Page({params}:{params:{id:string}}){
                 <div>
                   <h3 className="text-lg font-bold">Skills</h3>
                   <div className="grid grid-cols-3 gap-2">
-                    <div className="bg-gray-100 rounded-md px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-400">
-                      JavaScript
-                    </div>
-                    <div className="bg-gray-100 rounded-md px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-400">
-                      React
-                    </div>
-                    <div className="bg-gray-100 rounded-md px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-400">
-                      Node.js
-                    </div>
-                    <div className="bg-gray-100 rounded-md px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-400">
-                      SQL
-                    </div>
-                    <div className="bg-gray-100 rounded-md px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-400">
-                      Git
-                    </div>
-                    <div className="bg-gray-100 rounded-md px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-400">
-                      AWS
-                    </div>
+                    {graduate.skills.map((skill) => (
+                      //TODO: skill max char will be 11 on database
+                    <div key={skill} className="bg-gray-100 rounded-md px-3 py-1 text-sm font-medium text-gray-700 dark:text-gray-400">{skill}</div>
+                    ))}
                   </div>
                 </div>
                 <div>
@@ -133,17 +118,14 @@ export default function Page({params}:{params:{id:string}}){
                 </div>
                 <div>
                   <h3 className="text-lg font-bold">Projects</h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="bg-gray-100 rounded-md p-4">
-                      <h4 className="text-lg font-bold">Project 1</h4>
-                      <p className="text-gray-500 dark:text-gray-400">
-                        A full-stack web application built with React, Node.js, and MongoDB.
-                      </p>
-                    </div>
-                    <div className="bg-gray-100 rounded-md p-4">
-                      <h4 className="text-lg font-bold">Project 2</h4>
-                      <p className="text-gray-500 dark:text-gray-400">A mobile app built with React Native and Firebase.</p>
-                    </div>
+                  <div className="grid grid-cols-1 gap-4">
+                    {graduate.projects.map((project)=>(
+                      <div key={project.title} className="bg-gray-100 rounded-md p-4">
+                        <h4 className="text-lg font-bold">{project.title}</h4>
+                        <p className="text-gray-500 dark:text-gray-400">{project.description}</p>
+                        <Link className="mt-2 block text-blue-500 hover:underline" href={project.url}>Project Details</Link>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
