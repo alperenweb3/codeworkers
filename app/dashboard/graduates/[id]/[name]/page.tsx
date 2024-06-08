@@ -7,8 +7,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { EnvelopeIcon, PhoneIcon, AcademicCapIcon, BookOpenIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { graduates } from "@/app/lib/firebase/mockData";
-
 
 
 export default function Page({params}:{params:{id:string}}){
@@ -51,7 +49,7 @@ export default function Page({params}:{params:{id:string}}){
                 </div>
                 <div className="text-center">
                   <h2 className="text-2xl font-bold">{graduate.name}</h2>
-                  <p className="text-gray-500 dark:text-gray-400">{graduate.program}</p>
+                  <p className="text-gray-500 dark:text-gray-400">{graduate.title}</p>
                 </div>
                 <div className="grid grid-cols-1 gap-4 w-full">
                   <div className="flex items-center gap-3">
@@ -65,6 +63,10 @@ export default function Page({params}:{params:{id:string}}){
                   <div className="flex items-center gap-3">
                     <AcademicCapIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                     <p className="text-gray-500 dark:text-gray-400">{graduate.graduationYear}</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <BookOpenIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+                    <p className="text-gray-500 dark:text-gray-400">{graduate.program}</p>
                   </div>
                 </div>
                 <div className="flex gap-2 w-full">
@@ -117,7 +119,7 @@ export default function Page({params}:{params:{id:string}}){
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold">Projects</h3>
+                  <h3 className="text-lg font-bold">Top Projects</h3>
                   <div className="grid grid-cols-1 gap-4">
                     {graduate.projects.map((project)=>(
                       <div key={project.title} className="bg-gray-100 rounded-md p-4">

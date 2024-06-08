@@ -3,17 +3,15 @@ import { db } from './firebase';
 import { Graduate } from '../types';
 
 export const fetchGraduates = async (): Promise<Graduate[]> => {
-  console.log('fetching graduates');
-  const graduatesCollection = collection(db, 'graduates');
+  const graduatesCollection = collection(db, 'codeworks_graduates');
   const graduatesSnapshot = await getDocs(graduatesCollection);
   const graduatesList = graduatesSnapshot.docs.map(doc => doc.data() as Graduate);
   return graduatesList;
 };
 
 export const fetchGraduateById = async (id: string): Promise<Graduate | null> => {
-  const graduatesCollection = collection(db, 'graduates');
+  const graduatesCollection = collection(db, 'codeworks_graduates');
   const q = query(graduatesCollection, where('id', '==', id));
-  console.log(id);
   const graduatesSnapshot = await getDocs(q);
 
   if (graduatesSnapshot.empty) {
@@ -27,7 +25,7 @@ export const fetchGraduateById = async (id: string): Promise<Graduate | null> =>
 
 // Some queries may be helpful in the future
 export const fetchGraduateYear = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'graduates');
+  const graduatesCollection = collection(db, 'codeworks_graduates');
     // Create a query against the collection
     const q = query(graduatesCollection, where('graduationYear', '==', 2023));
   const graduatesSnapshot = await getDocs(q);
@@ -36,7 +34,7 @@ export const fetchGraduateYear = async (): Promise<Graduate[]> => {
 };
 
 export const fetchGraduateLocation = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'graduates');
+  const graduatesCollection = collection(db, 'codeworks_graduates');
     // Create a query against the collection
     const q = query(graduatesCollection, where('location', '==', 'San Francisco, CA'));
   const graduatesSnapshot = await getDocs(q);
@@ -44,7 +42,7 @@ export const fetchGraduateLocation = async (): Promise<Graduate[]> => {
   return graduatesList;
 };
 export const fetchGraduateAvailability = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'graduates');
+  const graduatesCollection = collection(db, 'codeworks_graduates');
     // Create a query against the collection
     const q = query(graduatesCollection, where('availability', '==', 'Freelancing'));
   const graduatesSnapshot = await getDocs(q);

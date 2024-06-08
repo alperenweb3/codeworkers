@@ -8,6 +8,7 @@ export interface Graduate {
   id: string;
   name: string;
   email: string;
+  title:string;
   phone: string;
   graduationYear: number;
   program: string;
