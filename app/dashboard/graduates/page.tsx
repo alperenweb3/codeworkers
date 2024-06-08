@@ -4,10 +4,11 @@ import { useEffect, useState } from "react"
 import { fetchGraduates } from "../../lib/firebase/data"
 import { Graduate } from "../../lib/types"
 import Image from "next/image";
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import Link from "next/link";
+import { MagnifyingGlassIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 
-export default function Page(){
+export default function Page({ name }: { name: string }){
   const [graduates, setGraduates] = useState<Graduate[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -116,6 +117,9 @@ export default function Page(){
                       </div>
                       <p className="text-sm text-gray-500">{graduate.email}</p>
                     </div>
+                    <Link href={`/dashboard/graduates/${graduate.id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                      <ArrowTopRightOnSquareIcon className="h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900"/>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -156,6 +160,9 @@ export default function Page(){
                           alt={`${graduate.name}'s profile picture`}
                         />
                         <p>{graduate.name}</p>
+                        <Link href={`/dashboard/graduates/${graduate.id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                        <ArrowTopRightOnSquareIcon className="h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900"/>
+                        </Link>
                       </div>
                     </td>
                     <td className="whitespace-nowrap px-3 py-3">
