@@ -1,4 +1,4 @@
-import { db } from './firebase'; // Corrected import path
+import { db } from './config'; // Corrected import path
 import { codeworks_graduates } from './mockData'; // Corrected import path
 import { collection, doc, setDoc } from 'firebase/firestore'; // Ensure correct Firestore functions are imported
 

@@ -1,5 +1,5 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from './firebase';
+import { db } from './config';
 import { Graduate } from '../types';
 
 export const fetchGraduates = async (): Promise<Graduate[]> => {
