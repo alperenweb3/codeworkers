@@ -7,7 +7,7 @@ import useGraduate from "@/app/hooks/useGraduate";
 
 export default function Page(){
   
-  const { graduate, loading, error } = useGraduate("12");
+  const { graduate, loading, error } = useGraduate("11");
 
   if (loading) {
     return <p>Loading...</p>;
@@ -196,16 +196,17 @@ export default function Page(){
               <option value="Freelancing">Freelancing</option>
             </select>
           </div>
-
-          {/* Projects */}
-          <button className="max-w-[200px] px-4 py-2 bg-orange-600 text-white rounded">Add Project</button>
-
+          <div className="mb-4">
+            <label className="block text-gray-700">Projects</label>
+            {/* Projects */}
+            <button className="min-w-[200px] px-4 py-2 bg-orange-600 text-white rounded">Add Project</button>
+          </div>
         </div>  
-        {/* Submit Button */}
       </div>
     </div>
     <div className="max-w-5xl flex justify-end p-4">
-    <button type="submit" className="min-w-[200px] px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Save Profile</button>
+      {/* Submit Button */}
+      <button type="submit" className="min-w-[200px] px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Save Profile</button>
     </div>
   </form>
   )       
