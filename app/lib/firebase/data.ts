@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
 import { db } from './config';
 import { Graduate } from '../types';
 
@@ -36,4 +36,12 @@ export const fetchGraduatesStatistics = async () => {
     totalNotAvailable,
     totalFreelancing,
   };
+};
+
+export const fetchLatestGraduates = async (): Promise<Graduate[]> => {
+  const graduatesCollection = collection(db, 'codeworks_graduates');
+  const graduatesQuery = query(graduatesCollection, orderBy('id', 'desc'), limit(5));
+  const graduatesSnapshot = await getDocs(graduatesQuery);
+  const graduatesList = graduatesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Graduate));
+  return graduatesList;
 };
