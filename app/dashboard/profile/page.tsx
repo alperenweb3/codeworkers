@@ -193,7 +193,7 @@ export default function Page(){
         {/* Submit Button */}
       </div>
     </div>
-    <div className="w-full flex justify-end p-4">
+    <div className="max-w-4xl flex justify-end p-4">
     <button type="submit" className="min-w-[200px] px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Save Profile</button>
     </div>
   </form>
