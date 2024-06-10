@@ -8,7 +8,7 @@ import Link from "next/link";
 import { MagnifyingGlassIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
 
 
-export default function Page({ name }: { name: string }){
+export default function Page(){
   const [graduates, setGraduates] = useState<Graduate[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
