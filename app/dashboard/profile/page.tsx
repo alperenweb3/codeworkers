@@ -1,60 +1,62 @@
 'use client';
 
-// import { useState, useEffect } from 'react';
-// import { useRouter } from 'next/navigation';
-// import { doc, getDoc, updateDoc } from 'firebase/firestore';
-// import { db, auth } from '@/app/lib/firebase/config'; // Ensure you have firebase configured
+
+import Image from "next/image";
+import useGraduate from "@/app/hooks/useGraduate";
+
 
 export default function Page(){
-  // const [profileData, setProfileData] = useState({
-  //   jobTitle: '',
-  //   profileImage: '',
-  //   name: '',
-  //   email: '',
-  //   phone: '',
-  //   graduationYear: '',
-  //   program: '',
-  //   skills: '',
-  //   location: '',
-  //   linkedinUrl: '',
-  //   githubUrl: '',
-  //   availability: 'Available',
-  //   shortBio: '',
-  //   projects: '',
-  // });
+  
+  const { graduate, loading, error } = useGraduate("12");
 
-  // const fetchProfileData = async () => {
-  //   const user = auth.currentUser;
-  //   if (user) {
-  //     const userDoc = doc(db, 'users', user.uid);
-  //     const userData = await getDoc(userDoc);
-  //     if (userData.exists()) {
-  //       setProfileData(userData.data());
-  //     }
-  //   }
-  // };
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-  // useEffect(() => {
-  //   fetchProfileData();
-  // }, []);
-  //   // Function to handle input change
-  //   const handleChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setProfileData({ ...profileData, [name]: value });
-  //   };
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  if (!graduate) {
+    return <p>No graduate found</p>;
+  }
+
   return(
     <form onSubmit={()=>{}} className="p-4">
     <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
-    <div className="flex p-4">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
-        <div className="flex flex-col gap-4">
-
+    <div className="bg-white rounded-xl shadow-lg w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+      <div className="flex flex-col gap-4">
+          
+      <div className="mb-4 grid grid-cols-1 md:grid-cols-2">
+          {/* Profile Image */}
+          <div className="rounded-full w-32 h-32 overflow-hidden">
+                  <Image
+                    src={graduate.profileImageUrl}
+                    alt={graduate.name}
+                    width={128}
+                    height={128}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+            <div>
+              <label className="block text-gray-700">Profile Image</label>
+              <input
+                type="file"
+                name="profileImage"
+                accept="image/*"
+                className="w-full p-2 border border-gray-300 rounded"
+              />
+            </div>    
+          </div>
+      </div>
+      <div className="flex flex-col gap-4">
           {/* Name */}
           <div className="mb-4">
             <label className="block text-gray-700">Name</label>
             <input
               type="text"
               name="name"
+              defaultValue={graduate.name}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -65,20 +67,15 @@ export default function Page(){
             <input
               type="text"
               name="jobTitle"
+              defaultValue={graduate.title}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
-
-          {/* Profile Image */}
-          <div className="mb-4">
-            <label className="block text-gray-700">Profile Image</label>
-            <input
-              type="file"
-              name="profileImage"
-              accept="image/*"
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-          </div>
+      </div>
+    </div>
+    <div className="flex pt-4">
+      <div className="bg-white rounded-xl shadow-lg w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+        <div className="flex flex-col gap-4">
 
           {/* Email */}
           <div className="mb-4">
@@ -86,6 +83,7 @@ export default function Page(){
             <input
               type="email"
               name="email"
+              defaultValue={graduate.email}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -96,6 +94,7 @@ export default function Page(){
             <input
               type="text"
               name="phone"
+              defaultValue={graduate.phone}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -106,6 +105,7 @@ export default function Page(){
             <input
               type="number"
               name="graduationYear"
+              defaultValue={graduate.graduationYear}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -116,6 +116,7 @@ export default function Page(){
             <input
               type="text"
               name="program"
+              defaultValue={graduate.program}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -126,6 +127,7 @@ export default function Page(){
             <input
               type="text"
               name="linkedinUrl"
+              defaultValue={graduate.linkedin}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -136,17 +138,20 @@ export default function Page(){
             <input
               type="text"
               name="githubUrl"
+              defaultValue={graduate.github}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
         </div>
         <div className="flex flex-col gap-4">
 
+
           {/* Short Bio */}
           <div className="mb-4">
             <label className="block text-gray-700">Short Bio</label>
             <textarea
               name="shortBio"
+              defaultValue={graduate.bio}
               rows={5}
               className="w-full p-2 border border-gray-300 rounded"
             />
@@ -159,6 +164,7 @@ export default function Page(){
             <input
               type="text"
               name="skills"
+              defaultValue={graduate.skills}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -169,6 +175,7 @@ export default function Page(){
             <input
               type="text"
               name="location"
+              defaultValue={graduate.location}
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
@@ -193,7 +200,7 @@ export default function Page(){
         {/* Submit Button */}
       </div>
     </div>
-    <div className="max-w-4xl flex justify-end p-4">
+    <div className="max-w-5xl flex justify-end p-4">
     <button type="submit" className="min-w-[200px] px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Save Profile</button>
     </div>
   </form>
