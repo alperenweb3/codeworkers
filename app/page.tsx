@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import CodeWorkersLogo from "./ui/codeworkers-logo";
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
@@ -48,3 +50,5 @@ export default function Home() {
     </main>
   );
 }
+
+Home.requireAuth = true;
