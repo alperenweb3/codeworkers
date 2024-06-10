@@ -187,19 +187,15 @@ export default function Page(){
           </div>
 
           {/* Projects */}
-          <div className="mb-4">
-            <label className="block text-gray-700">Projects</label>
-            <textarea
-              name="projects"
-              className="w-full p-2 border border-gray-300 rounded"
-            />
-          </div>
+          <button className="max-w-[200px] px-4 py-2 bg-orange-600 text-white rounded">Add Project</button>
+
         </div>  
+        {/* Submit Button */}
       </div>
     </div>
-
-    {/* Submit Button */}
-    <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">Save</button>
+    <div className="w-full flex justify-end p-4">
+    <button type="submit" className="min-w-[200px] px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded">Save Profile</button>
+    </div>
   </form>
   )       
 }
