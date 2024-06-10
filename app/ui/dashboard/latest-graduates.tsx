@@ -15,7 +15,6 @@ export default async function LatestGraduates() {
 
         <div className="bg-white px-6">
           {latestGraduates.map((graduate, i) => {
-            console.log(graduate.name);
             return (
               <div
                 key={graduate.id}
