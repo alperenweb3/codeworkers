@@ -21,6 +21,10 @@ export default function Page(){
     return <p>No graduate found</p>;
   }
 
+  const handleSubmit = () => {
+    
+  }
+
   return(
     <form onSubmit={()=>{}} className="p-4">
     <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>

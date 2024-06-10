@@ -22,30 +22,18 @@ export const fetchGraduateById = async (id: string): Promise<Graduate | null> =>
   return graduateDoc.data() as Graduate;
 };
 
+export const fetchGraduatesStatistics = async () => {
+  const graduates = await fetchGraduates();
 
-// Some queries may be helpful in the future
-export const fetchGraduateYear = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'codeworks_graduates');
-    // Create a query against the collection
-    const q = query(graduatesCollection, where('graduationYear', '==', 2023));
-  const graduatesSnapshot = await getDocs(q);
-  const graduatesList = graduatesSnapshot.docs.map(doc => doc.data() as Graduate);
-  return graduatesList;
-};
+  const totalGraduates = graduates.length;
+  const totalAvailable = graduates.filter(grad => grad.availability === 'Available').length;
+  const totalNotAvailable = graduates.filter(grad => grad.availability === 'Not Available').length;
+  const totalFreelancing = graduates.filter(grad => grad.availability === 'Freelancing').length;
 
-export const fetchGraduateLocation = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'codeworks_graduates');
-    // Create a query against the collection
-    const q = query(graduatesCollection, where('location', '==', 'San Francisco, CA'));
-  const graduatesSnapshot = await getDocs(q);
-  const graduatesList = graduatesSnapshot.docs.map(doc => doc.data() as Graduate);
-  return graduatesList;
-};
-export const fetchGraduateAvailability = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'codeworks_graduates');
-    // Create a query against the collection
-    const q = query(graduatesCollection, where('availability', '==', 'Freelancing'));
-  const graduatesSnapshot = await getDocs(q);
-  const graduatesList = graduatesSnapshot.docs.map(doc => doc.data() as Graduate);
-  return graduatesList;
+  return {
+    totalGraduates,
+    totalAvailable,
+    totalNotAvailable,
+    totalFreelancing,
+  };
 };
