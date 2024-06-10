@@ -19,7 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.variable + ' ' + archivo.variable}><SessionProvider>{children}</SessionProvider></body>
+      <body className={roboto.variable + ' ' + archivo.variable}>
+        <SessionProvider>
+          {children}
+        </SessionProvider>
+      </body>
     </html>
   );
 }

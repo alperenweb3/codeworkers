@@ -1,22 +1,19 @@
 'use client';
 
-// import { lusitana } from '@/app/ui/fonts';
 import {
   AtSymbolIcon,
   KeyIcon,
-  ExclamationCircleIcon,
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-// import { authenticate } from '@/app/lib/actions';
+// import { useRouter } from 'next/navigation';
 
 export default function LoginForm() {
-  // const [errorMessage, dispatch] = useFormState(authenticate, undefined);
-const [email, setEmail] = useState('');
-const [password, setPassword] = useState('');
-const router = useRouter();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const router = useRouter();
   return (
     <form action='' className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
@@ -73,17 +70,6 @@ const router = useRouter();
               >
                 Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
               </button>
-        {/* <div
-          className="flex h-8 items-end space-x-1"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-
-            <>
-              <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-            </>
-          
-        </div> */}
       </div>
     </form>
   );
