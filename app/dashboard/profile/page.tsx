@@ -3,11 +3,12 @@
 
 import Image from "next/image";
 import useGraduate from "@/app/hooks/useGraduate";
+import { updateFirebaseDoc } from "@/app/lib/firebase/data";
 
 
 export default function Page(){
   
-  const { graduate, loading, error } = useGraduate("11");
+  const { graduate, loading, error } = useGraduate("1");
 
   if (loading) {
     return <p>Loading...</p>;
@@ -21,16 +22,18 @@ export default function Page(){
     return <p>No graduate found</p>;
   }
 
-  const handleSubmit = () => {
-    
+  const handleSubmit = async (e:any) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.currentTarget)) ;
+    console.log('Form submitted', formData);
+    await updateFirebaseDoc(graduate.id, formData);
   }
 
   return(
-    <form onSubmit={()=>{}} className="p-4">
+    <form onSubmit={handleSubmit} className="p-4">
     <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
     <div className="bg-white rounded-xl shadow-lg w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
       <div className="flex flex-col gap-4">
-          
       <div className="mb-4 grid grid-cols-1 md:grid-cols-2">
           {/* Profile Image */}
           <div className="rounded-full w-32 h-32 overflow-hidden">

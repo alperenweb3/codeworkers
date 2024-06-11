@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc, query, where, orderBy, limit } from "firebase/firestore";
 import { db } from './config';
 import { Graduate } from '../types';
 
@@ -44,4 +44,18 @@ export const fetchLatestGraduates = async (): Promise<Graduate[]> => {
   const graduatesSnapshot = await getDocs(graduatesQuery);
   const graduatesList = graduatesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Graduate));
   return graduatesList;
+};
+
+type FormData = {
+  [key: string]: string | number | boolean | File;
+};
+
+export const updateFirebaseDoc = async (docId: string, formData: FormData) => {
+  try {
+    const docRef = doc(db, "codeworks_graduates", docId);
+    await updateDoc(docRef, formData);
+    console.log("Document updated with ID: ", docId);
+  } catch (e) {
+    console.error("Error updating document: ", e);
+  }
 };
