@@ -2,13 +2,13 @@ import { ArrowPathIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/ou
 import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
-import { roboto } from '@/app/ui/fonts';
+import { arimo } from '@/app/ui/fonts';
 import { fetchLatestGraduates } from '@/app/lib/firebase/data';
 export default async function LatestGraduates() {
   const latestGraduates = await fetchLatestGraduates();
   return (
     <div className="flex w-full flex-col md:col-span-4">
-      <h2 className={`${roboto.className} mb-4 text-xl md:text-2xl`}>
+      <h2 className={`${arimo.className} mb-4 text-xl md:text-2xl`}>
         Latest graduates
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
@@ -43,7 +43,7 @@ export default async function LatestGraduates() {
                   </div>
                 </div>
                 <p
-                  className={`${roboto.className} truncate text-sm font-medium md:text-base`}
+                  className={`${arimo.className} truncate text-sm font-medium md:text-base`}
                 >
                   <Link href={`/dashboard/graduates/${graduate._id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                       <ArrowTopRightOnSquareIcon className="h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900"/>

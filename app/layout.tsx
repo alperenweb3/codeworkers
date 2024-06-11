@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { roboto, archivo } from '@/app/ui/fonts';
+import { arimo, archivo } from '@/app/ui/fonts';
 import SessionProvider from "./SessionProvider";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.variable + ' ' + archivo.variable}>
+      <body className={arimo.variable + ' ' + archivo.variable}>
         <SessionProvider>
           {children}
         </SessionProvider>
