@@ -173,7 +173,7 @@ export default function Page(){
           <div className="mb-4">
             <label className="block text-gray-700">Short Bio</label>
             <textarea
-              name="shortBio"
+              name="bio"
               defaultValue={graduate.bio}
               rows={5}
               className="w-full p-2 border border-gray-300 rounded"
