@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { fetchGraduateById } from "@/app/lib/firebase/data"
 import Image from "next/image"
 import Link from "next/link"
+import clsx from "clsx";
 import { EnvelopeIcon, PhoneIcon, AcademicCapIcon, BookOpenIcon, MapPinIcon } from '@heroicons/react/24/outline';
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
@@ -114,7 +115,11 @@ export default function Page({params}:{params:{id:string}}){
                 <div>
                   <h3 className="text-lg font-bold">Availability</h3>
                   <div className="flex items-center gap-2">
-                    <div className="h-3 w-3 rounded-full bg-green-500" />
+                    <div className={clsx("h-3 w-3 rounded-full", {
+                      'bg-green-500': graduate.availability === 'Available',
+                      'bg-red-500': graduate.availability === 'Not Available',
+                      'bg-purple-500': graduate.availability === 'Freelancing',
+                      })} />
                     <p className="text-gray-500 dark:text-gray-400">{graduate.availability}</p>
                   </div>
                 </div>
