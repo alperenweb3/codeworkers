@@ -100,7 +100,7 @@ export default function Page(){
             <div className="md:hidden">
               {filteredGraduates?.map((graduate) => (
                 <div
-                  key={graduate.id}
+                  key={graduate._id}
                   className="mb-2 w-full rounded-md bg-white p-4"
                 >
                   <div className="flex items-center justify-between border-b pb-4">
@@ -117,7 +117,7 @@ export default function Page(){
                       </div>
                       <p className="text-sm text-gray-500">{graduate.email}</p>
                     </div>
-                    <Link href={`/dashboard/graduates/${graduate.id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                    <Link href={`/dashboard/graduates/${graduate._id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                       <ArrowTopRightOnSquareIcon className="h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900"/>
                     </Link>
                   </div>
@@ -147,7 +147,7 @@ export default function Page(){
               <tbody className="bg-white">
                 {filteredGraduates?.map((graduate) => (
                   <tr
-                    key={graduate.id}
+                    key={graduate._id}
                     className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                   >
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">
@@ -160,7 +160,7 @@ export default function Page(){
                           alt={`${graduate.name}'s profile picture`}
                         />
                         <p>{graduate.name}</p>
-                        <Link href={`/dashboard/graduates/${graduate.id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                        <Link href={`/dashboard/graduates/${graduate._id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                         <ArrowTopRightOnSquareIcon className="h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900"/>
                         </Link>
                       </div>

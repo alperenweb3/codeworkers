@@ -1,8 +1,7 @@
-import { Graduate } from '../types';
+import { Graduate, GraduateUid } from '../types';
 
-export const codeworks_graduates: Graduate[] = [
+export const codeworks_graduates: GraduateUid[] = [
   {
-    id: "1",
     name: "John Doe",
     email: "john.doe@example.com",
     title:"Full-Stack Developer",
@@ -30,7 +29,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=1"
   },
   {
-    id: "2",
     name: "Jane Smith",
     email: "jane.smith@example.com",
     title:"Data Scientist",
@@ -58,7 +56,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=2"
   },
   {
-    id: "3",
     name: "Alice Johnson",
     email: "alice.johnson@example.com",
     title:"UI/UX Designer",
@@ -87,7 +84,6 @@ export const codeworks_graduates: Graduate[] = [
   },
   // Adding more graduate profiles
   {
-    id: "4",
     name: "Bob Brown",
     email: "bob.brown@example.com",
     title:"Cyber Security Analyst",
@@ -110,7 +106,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=4"
   },
   {
-    id: "5",
     name: "Charlie Davis",
     email: "charlie.davis@example.com",
     title:"DevOps Engineer",
@@ -133,7 +128,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=5"
   },
   {
-    id: "6",
     name: "Diana Evans",
     email: "diana.evans@example.com",
     title:"Mobile App Developer",
@@ -156,7 +150,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=6"
   },
   {
-    id: "7",
     name: "Ethan Foster",
     email: "ethan.foster@example.com",
     title:"Data Engineer",
@@ -179,7 +172,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=7"
   },
   {
-    id: "8",
     name: "Fiona Green",
     email: "fiona.green@example.com",
     title:"Data Engineer",
@@ -202,7 +194,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=8"
   },
   {
-    id: "9",
     name: "George Harris",
     email: "george.harris@example.com",
     title:"Backend Developer",
@@ -225,7 +216,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=9"
   },
   {
-    id: "10",
     name: "Hannah Lee",
     email: "hannah.lee@example.com",
     title:"Frontend Developer",
@@ -248,7 +238,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=10"
   },
   {
-    id: "11",
     name: "Ivan Martinez",
     email: "ivan.martinez@example.com",
     title:"Full-Stack Developer",
@@ -276,7 +265,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=11"
   },
   {
-    id: "12",
     name: "Julia Nelson",
     email: "julia.nelson@example.com",
     title:"Data Scientist",
@@ -304,7 +292,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=12"
   },
   {
-    id: "13",
     name: "Kevin O'Brien",
     email: "kevin.obrien@example.com",
     title:"UI/UX Designer",
@@ -332,7 +319,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=13"
   },
   {
-    id: "14",
     name: "Laura Perez",
     email: "laura.perez@example.com",
     title:"Cybersecurity Analyst",
@@ -355,7 +341,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=14"
   },
   {
-    id: "15",
     name: "Michael Quinn",
     email: "michael.quinn@example.com",
     title:"DevOps Engineer",
@@ -378,7 +363,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=15"
   },
   {
-    id: "16",
     name: "Natalie Roberts",
     email: "natalie.roberts@example.com",
     title:"Mobile App Developer",
@@ -401,7 +385,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=16"
   },
   {
-    id: "17",
     name: "Oliver Scott",
     email: "oliver.scott@example.com",
     title:"Data Engineer",
@@ -424,7 +407,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=17"
   },
   {
-    id: "18",
     name: "Paula Turner",
     email: "paula.turner@example.com",
     title:"Data Engineer",
@@ -447,7 +429,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=18"
   },
   {
-    id: "19",
     name: "Quinn Underwood",
     email: "quinn.underwood@example.com",
     title:"Backend Developer",
@@ -470,7 +451,6 @@ export const codeworks_graduates: Graduate[] = [
     profileImageUrl: "https://i.pravatar.cc/150?img=19"
   },
   {
-    id: "20",
     name: "Rachel Vaughn",
     email: "rachel.vaughn@example.com",
     title:"Frontend Developer",

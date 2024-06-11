@@ -5,7 +5,24 @@ export interface Project {
 }
 
 export interface Graduate {
-  id: string;
+  _id: string;
+  name: string;
+  email: string;
+  title:string;
+  phone: string;
+  graduationYear: number;
+  program: string;
+  skills: string[];
+  location: string;
+  linkedin: string;
+  github: string;
+  bio: string;
+  projects: Project[];
+  availability: string;
+  profileImageUrl: string;
+}
+
+export interface GraduateUid {
   name: string;
   email: string;
   title:string;

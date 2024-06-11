@@ -9,7 +9,7 @@ import { FirestoreData } from "@/app/lib/types";
 
 export default function Page(){
   
-  const { graduate, loading, error } = useGraduate("1");
+  const { graduate, loading, error } = useGraduate("phqIVobrHJpSz5nlxFMQ");
 
   if (loading) {
     return <p>Loading...</p>;
@@ -41,7 +41,7 @@ export default function Page(){
       }
     }
   
-    const docId = graduate.id; // Replace this with the actual document ID you want to update
+    const docId = graduate._id; // Replace this with the actual document ID you want to update
     await updateFirebaseDoc(docId, sanitizedData);
   };
 
@@ -89,7 +89,7 @@ export default function Page(){
             <label className="block text-gray-700">Job Title</label>
             <input
               type="text"
-              name="jobTitle"
+              name="title"
               defaultValue={graduate.title}
               className="w-full p-2 border border-gray-300 rounded"
             />

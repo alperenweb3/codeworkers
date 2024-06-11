@@ -4,15 +4,15 @@ import { db, storage } from './config';
 import { Graduate, FirestoreData } from '../types';
 
 export const fetchGraduates = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'codeworks_graduates');
+  const graduatesCollection = collection(db, 'codeworks_bootcamp');
   const graduatesSnapshot = await getDocs(graduatesCollection);
   const graduatesList = graduatesSnapshot.docs.map(doc => doc.data() as Graduate);
   return graduatesList;
 };
 
 export const fetchGraduateById = async (id: string): Promise<Graduate | null> => {
-  const graduatesCollection = collection(db, 'codeworks_graduates');
-  const q = query(graduatesCollection, where('id', '==', id));
+  const graduatesCollection = collection(db, 'codeworks_bootcamp');
+  const q = query(graduatesCollection, where('_id', '==', id));
   const graduatesSnapshot = await getDocs(q);
 
   if (graduatesSnapshot.empty) {
@@ -40,16 +40,16 @@ export const fetchGraduatesStatistics = async () => {
 };
 
 export const fetchLatestGraduates = async (): Promise<Graduate[]> => {
-  const graduatesCollection = collection(db, 'codeworks_graduates');
-  const graduatesQuery = query(graduatesCollection, orderBy('id', 'desc'), limit(5));
+  const graduatesCollection = collection(db, 'codeworks_bootcamp');
+  const graduatesQuery = query(graduatesCollection, orderBy('_id', 'desc'), limit(5));
   const graduatesSnapshot = await getDocs(graduatesQuery);
-  const graduatesList = graduatesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Graduate));
+  const graduatesList = graduatesSnapshot.docs.map(doc => ({ _id: doc.id, ...doc.data() } as Graduate));
   return graduatesList;
 };
 
 export const updateFirebaseDoc = async (docId: string, formData: FirestoreData) => {
   try {
-    const docRef = doc(db, "codeworks_graduates", docId);
+    const docRef = doc(db, "codeworks_bootcamp", docId);
     await updateDoc(docRef, formData);
     console.log("Document updated with ID: ", docId);
   } catch (e) {

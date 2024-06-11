@@ -17,7 +17,7 @@ export default async function LatestGraduates() {
           {latestGraduates.map((graduate, i) => {
             return (
               <div
-                key={graduate.id}
+                key={graduate._id}
                 className={clsx(
                   'flex flex-row items-center justify-between py-4',
                   {
@@ -45,7 +45,7 @@ export default async function LatestGraduates() {
                 <p
                   className={`${roboto.className} truncate text-sm font-medium md:text-base`}
                 >
-                  <Link href={`/dashboard/graduates/${graduate.id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
+                  <Link href={`/dashboard/graduates/${graduate._id}/${(graduate.name).replace(/[^\w\s]|_/g, '').replace(/\s+/g, '-').toLowerCase()}`}>
                       <ArrowTopRightOnSquareIcon className="h-[18px] w-[18px] text-gray-500 peer-focus:text-gray-900"/>
                   </Link>
                 </p>
