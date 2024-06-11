@@ -3,7 +3,8 @@
 
 import Image from "next/image";
 import useGraduate from "@/app/hooks/useGraduate";
-import { updateFirebaseDoc } from "@/app/lib/firebase/data";
+import { updateFirebaseDoc, uploadFile } from "@/app/lib/firebase/data";
+import { FirestoreData } from "@/app/lib/types";
 
 
 export default function Page(){
@@ -22,12 +23,27 @@ export default function Page(){
     return <p>No graduate found</p>;
   }
 
-  const handleSubmit = async (e:any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const formData = Object.fromEntries(new FormData(e.currentTarget)) ;
-    console.log('Form submitted', formData);
-    await updateFirebaseDoc(graduate.id, formData);
-  }
+    const target = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(target);
+  
+    const sanitizedData: FirestoreData = {};
+    for (const [key, value] of formData.entries()) {
+      if (value instanceof File && value.size > 0) {
+        const path = `codeworkers/user/${value.name}`;
+        const downloadURL = await uploadFile(value, path);
+        sanitizedData[key] = downloadURL;
+      } else if (key === 'skills') {
+        sanitizedData[key] = value.toString().split(',').map(skill => skill.trim());
+      } else {
+        sanitizedData[key] = value.toString();
+      }
+    }
+  
+    const docId = graduate.id; // Replace this with the actual document ID you want to update
+    await updateFirebaseDoc(docId, sanitizedData);
+  };
 
   return(
     <form onSubmit={handleSubmit} className="p-4">
@@ -167,7 +183,7 @@ export default function Page(){
 
           {/* Skills */}
           <div className="mb-4">
-            <label className="block text-gray-700">Skills</label>
+            <label className="block text-gray-700">Skills ( please use comma! )</label>
             <input
               type="text"
               name="skills"

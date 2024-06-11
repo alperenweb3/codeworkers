@@ -21,3 +21,7 @@ export interface Graduate {
   availability: string;
   profileImageUrl: string;
 }
+
+export type FirestoreData = {
+  [key: string]: string | number | boolean | string[];
+};
