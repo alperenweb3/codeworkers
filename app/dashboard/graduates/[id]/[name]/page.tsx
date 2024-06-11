@@ -54,11 +54,11 @@ export default function Page({params}:{params:{id:string}}){
                 </div>
                 <div className="grid grid-cols-1 gap-4 w-full">
                   <div className="flex items-center gap-3">
-                    <EnvelopeIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+                    <Link href={`mailto:${graduate.email}`} target="_blank"><EnvelopeIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" /></Link>
                     <p className="text-gray-500 dark:text-gray-400">{graduate.email}</p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <PhoneIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+                    <Link href={`tel:${graduate.phone}`} target="_blank"><PhoneIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" /></Link>
                     <p className="text-gray-500 dark:text-gray-400">{graduate.phone}</p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -73,6 +73,7 @@ export default function Page({params}:{params:{id:string}}){
                 <div className="flex gap-2 w-full">
                   <Link
                     href={graduate.linkedin}
+                    target="_blank"
                     className="flex-1 inline-flex h-9 items-center justify-center rounded-md bg-blue-500 text-white shadow transition-colors hover:bg-blue-600 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-950 disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                   >
@@ -81,6 +82,7 @@ export default function Page({params}:{params:{id:string}}){
                   </Link>
                   <Link
                     href={graduate.github}
+                    target="_blank"
                     className="flex-1 inline-flex h-9 items-center justify-center rounded-md bg-gray-900 text-white shadow transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-200"
                     prefetch={false}
                   >
