@@ -149,7 +149,7 @@ export default function Page(){
             <label className="block text-gray-700">LinkedIn URL</label>
             <input
               type="text"
-              name="linkedinUrl"
+              name="linkedin"
               defaultValue={graduate.linkedin}
               className="w-full p-2 border border-gray-300 rounded"
             />
@@ -160,7 +160,7 @@ export default function Page(){
             <label className="block text-gray-700">GitHub URL</label>
             <input
               type="text"
-              name="githubUrl"
+              name="github"
               defaultValue={graduate.github}
               className="w-full p-2 border border-gray-300 rounded"
             />
