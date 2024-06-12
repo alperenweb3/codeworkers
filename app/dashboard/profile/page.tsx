@@ -46,7 +46,8 @@ export default function Page(){
   };
 
   return(
-    <form onSubmit={handleSubmit} className="p-4">
+    //TODO disable handleSubmit until auth implemented
+    <form onSubmit={()=>{}} className="p-4">
     <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
     <div className="bg-white rounded-xl shadow-lg w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
       <div className="flex flex-col gap-4">
